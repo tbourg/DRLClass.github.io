@@ -1,4 +1,4 @@
-# Introduction à l'apprentisssage profond
+# Apprentisssage profond par renforcement
 ### Thomas Boug & Théo Buttez - M2IA 2019-2020
 ### Université Lyon 1
 
