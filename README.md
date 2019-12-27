@@ -14,3 +14,6 @@ La première partie se trouve dans le dossier `cartpole`. Le fichier python à e
 
 La partie finale se trouve dans le dossier `atari`. Le fichier python à exécuter est `main.py`.
 
+----------------------------------------------
+
+Le rapport est disponible [ici](./rapport.md).
