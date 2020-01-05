@@ -85,6 +85,8 @@ class Agent(object):
         
     def get_best_action(self, ob):
         index = torch.argmax(self.get_q_vals(ob), 0)
+
+        print(index)
         return index.int().item()
         
     def get_max_q_val(self, ob):
@@ -94,8 +96,10 @@ class Agent(object):
     def get_q_vals(self, ob):
         self.brain.eval()
         with torch.no_grad():
-            ob = torch.tensor(ob).float()
+            ob = torch.tensor(ob).float().unsqueeze(0)
+            print(ob.shape)
             output = self.brain(ob)
+            print(output.shape)
         return output
     
     

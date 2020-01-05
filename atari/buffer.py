@@ -16,3 +16,5 @@ class ReplayMemory():
     def get_minibatch(self):
         size = min(len(self.memory), self.mb_size)
         return random.sample(self.memory, k=size)
+        
+        

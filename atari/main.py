@@ -26,9 +26,10 @@ if __name__ == '__main__':
 
     #env = wrappers.Monitor(env, force=True)
     #env.seed(0)
-    
     env = wrappers.AtariPreprocessing(env)
-    env.seed(0)
+    env = wrappers.FrameStack(env, 4)
+    
+    #env.seed(0)
     
     agent = Agent(env)
 
@@ -40,6 +41,7 @@ if __name__ == '__main__':
         ob = env.reset()
         prev_ob = ob
         episode_reward = 0
+        print(ob)
         while True:
             action = agent.act(ob, reward, done)
             ob, reward, done, _ = env.step(action)
