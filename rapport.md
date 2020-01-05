@@ -26,6 +26,13 @@ Dans cette partie, on utilise un environnement plus complexe, le BreakoutNoFrame
 
 A chaque étape, l'agent connaît les 4 dernières frames renvoyées par le jeu. Il doit alors étudier ces frames pour placer la plateforme au bon endroit et réceptionner la balle.
 
-Pour cela, nous utilisons les wrappers de gym : FrameStack, qui renvoie les 4 dernières frames, et AtariPreprocessing, qui grise l'image et la redimensionne en 84x84 pixels.
+Pour cela, nous utilisons les wrappers de gym : FrameStack, qui renvoie les 4 dernières frames, et AtariPreprocessing, qui grise l'image et la redimensionne en 84x84 pixels (Nous n'avons pas réussi à adapter le code pour gérer les états 4x84x84).
 
 Avec le réseau de neurones, l'agent récupère de la même manière une valeur associée à chaque action, puis exécute l'action correspondant à la valeur maximale.
+
+Dans l'article, l'algorithme utilisé est le RMSProp avec des minibatchs de taille 32. La même méthode &epsilon;-greedy est utilisée avec &epsilon; qui diminue progressivement de 1 à 0.1 durant le 1er million de frames puis est fixé à 0.1.
+
+Pour avoir un apprentissage intéressant, il faut lancer des apprentissages de plusieurs millions de frames (une dizaine d'après l'article).
+
+AtariPreprocessing donne un Frameskip de base de 4, ce qui correspond à ce qui est décrit dans l'article. Cela permet de faire jouer l'agent une frame sur 4 en partant du principe que son comportement sur les frames sautées sera globalement identique. Ce changement permet de gagner beaucoup de temps et donc de faire des apprentissages plus rapides.
+
